@@ -1,0 +1,57 @@
+name: Validate Campaign Chunk
+
+on:
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+    inputs:
+      chunk_id:
+        description: "Chunk ID to validate"
+        required: false
+        default: "001"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Determine chunk
+        id: chunk
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "id=${{ github.event.inputs.chunk_id }}" >> "$GITHUB_OUTPUT"
+          else
+            python - <<'PY' >> "$GITHUB_OUTPUT"
+          import json
+          m=json.load(open("manifest.json"))
+          print(f"id={m.get('current_chunk','001')}")
+          PY
+          fi
+
+      - name: Repo status
+        run: python scripts/repo_status.py
+
+      - name: Build prompt
+        run: python scripts/build_prompt.py ${{ steps.chunk.outputs.id }}
+
+      - name: Validate chunk
+        run: python scripts/validate_chunk.py ${{ steps.chunk.outputs.id }}
+
+      - name: Canon cross-check
+        run: python scripts/canon_cross_check.py ${{ steps.chunk.outputs.id }}
+
+      - name: Upload reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: validation-reports
+          path: |
+            reports/*.json
+            .tmp/*.md

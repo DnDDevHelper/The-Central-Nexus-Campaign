@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Canon Cross-Reference Audit",
+  "type": "object",
+  "required": [
+    "chunk_id",
+    "passed",
+    "canon_requirements_checked",
+    "confirmed_canon",
+    "missing_canon",
+    "contradictions",
+    "dangerous_ambiguities",
+    "required_repairs"
+  ],
+  "properties": {
+    "chunk_id": {
+      "type": "string"
+    },
+    "passed": {
+      "type": "boolean"
+    },
+    "canon_requirements_checked": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "confirmed_canon": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "missing_canon": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "contradictions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "dangerous_ambiguities": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "required_repairs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

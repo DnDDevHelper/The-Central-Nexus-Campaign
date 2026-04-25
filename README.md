@@ -88,3 +88,39 @@ Or open Gemini CLI interactively and tell it:
 The immediate priority is **001_canon_repair**.
 
 That chunk must repair the mistaken early-Tower progression and restore the portal-world campaign structure.
+
+## Automated Pipeline
+
+This repo now supports an orchestrated chunk pipeline.
+
+**Prompt-only mode:**
+```
+python scripts/run_chunk_pipeline.py 001 --mode prompt-only
+```
+
+**Gemini CLI mode:**
+```bash
+set TCN_LLM_COMMAND=gemini
+python scripts/run_chunk_pipeline.py 001 --mode gemini-cli --max-repairs 2
+```
+
+**PowerShell:**
+```powershell
+$env:TCN_LLM_COMMAND="gemini"
+python scripts/run_chunk_pipeline.py 001 --mode gemini-cli --max-repairs 2
+```
+
+The pipeline performs:
+
+1. writer prompt creation
+2. deterministic validation
+3. canon cross-check
+4. brutal audit prompt creation
+5. optional automated LLM audit
+6. repair prompt creation
+7. optional repair loop
+8. final reports
+
+**Do not advance the manifest until all checks pass.**
+
+See `docs/AUTOMATION_WORKFLOW.md`, `docs/JULES_WORKFLOW.md`, and `docs/GEMINI_CLI_WORKFLOW.md` for detailed guides.

@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Campaign Chunk Audit Report",
+  "type": "object",
+  "required": [
+    "chunk_id",
+    "chunk_title",
+    "passed",
+    "confidence",
+    "fatal_issues",
+    "major_issues",
+    "minor_issues",
+    "canon_conflicts",
+    "table_usability_issues",
+    "missing_required_sections",
+    "required_repairs",
+    "evidence_quotes",
+    "final_verdict"
+  ],
+  "properties": {
+    "chunk_id": {
+      "type": "string"
+    },
+    "chunk_title": {
+      "type": "string"
+    },
+    "passed": {
+      "type": "boolean"
+    },
+    "confidence": {
+      "type": "string",
+      "enum": ["low", "medium", "high"]
+    },
+    "fatal_issues": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "major_issues": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "minor_issues": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "canon_conflicts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "table_usability_issues": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "missing_required_sections": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "required_repairs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence_quotes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["source", "quote", "why_it_matters"],
+        "properties": {
+          "source": {
+            "type": "string"
+          },
+          "quote": {
+            "type": "string"
+          },
+          "why_it_matters": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "final_verdict": {
+      "type": "string"
+    }
+  }
+}

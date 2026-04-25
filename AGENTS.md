@@ -88,3 +88,26 @@ Gemini CLI should treat this repo like a local writing/build pipeline:
 3. run validation scripts
 4. patch failed validation
 5. stop after the assigned chunk
+
+## Automated Pipeline Rules
+
+When using automation, agents must respect this sequence:
+
+1. Write or repair one chunk only.
+2. Run deterministic validation: `python scripts/validate_chunk.py <chunk_id>`
+3. Run canon cross-check: `python scripts/canon_cross_check.py <chunk_id>`
+4. Run brutal audit (separate model recommended).
+5. Repair only failed sections.
+6. Re-run validation.
+7. Stop after pass or after max repair attempts.
+
+The writer agent is not allowed to be the only judge of its own work.
+
+The audit must be evidence-based and include quotes or references to the manuscript/canon where possible.
+
+A chunk is not complete until:
+
+- deterministic validation passes
+- canon cross-check passes
+- brutal audit passes
+- required handoff exists

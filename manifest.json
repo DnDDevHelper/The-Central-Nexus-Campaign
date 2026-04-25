@@ -29,5 +29,17 @@
   "active_validation_profile": "canon_repair",
   "last_handoff_heading": "Chunk Handoff Summary",
   "reports_dir": "reports",
-  "tmp_dir": ".tmp"
+  "tmp_dir": ".tmp",
+  "automation": {
+    "pipeline_script": "scripts/run_chunk_pipeline.py",
+    "deterministic_validator": "scripts/validate_chunk.py",
+    "canon_cross_checker": "scripts/canon_cross_check.py",
+    "audit_prompt_builder": "scripts/build_audit_prompt.py",
+    "repair_prompt_builder": "scripts/build_repair_prompt.py",
+    "max_repair_attempts": 2,
+    "llm_command_env_var": "TCN_LLM_COMMAND",
+    "requires_brutal_audit": true,
+    "requires_canon_cross_check": true,
+    "requires_handoff": true
+  }
 }
