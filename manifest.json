@@ -1,0 +1,33 @@
+{
+  "project_name": "The Central Nexus: The Tower of Ascension",
+  "repo_version": "0.1.0",
+  "master_file": "manuscript/The_Central_Nexus_Tower_of_Ascension_Campaign_Book.md",
+  "current_chunk": "001",
+  "current_chunk_title": "Canon Repair: Portal Worlds and the True Floor 1",
+  "completed_chunks": [],
+  "next_chunks": [
+    "001",
+    "002",
+    "003",
+    "004",
+    "005",
+    "006"
+  ],
+  "canon_priorities": [
+    "The Central Nexus is the MMO-style hub/social city/faction marketplace.",
+    "Portal worlds are the main early campaign focus.",
+    "Each portal world creates or activates its own D&D 5e character.",
+    "Portal-world characters can return to the Central Nexus.",
+    "Portal-world characters can eventually attempt the Spire/Tower.",
+    "Items and followers from one portal world cannot be used in another portal world.",
+    "Followers are earned through quest lines and match the level of the player character from that portal world.",
+    "The true Spire Floor 1 is The Executioner.",
+    "The Executioner is a CR 10 extreme threat and should not be nerfed into a low-level tutorial.",
+    "Low-level Tower attempts should be dangerous and may result in death, extraction, or retreat.",
+    "The early campaign should point players toward portal worlds for leveling, followers, gear, and preparation."
+  ],
+  "active_validation_profile": "canon_repair",
+  "last_handoff_heading": "Chunk Handoff Summary",
+  "reports_dir": "reports",
+  "tmp_dir": ".tmp"
+}
